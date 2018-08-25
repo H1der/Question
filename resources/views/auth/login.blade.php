@@ -8,12 +8,12 @@
                     <div class="card-header">{{ __('Login') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
+                        <form method="POST" action="{{ route('login') }}" aria-label="{{ __('登陆') }}">
                             @csrf
 
                             <div class="form-group row">
                                 <label for="email"
-                                       class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                                       class="col-sm-4 col-form-label text-md-right">{{ __('邮箱') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email"
@@ -30,7 +30,7 @@
 
                             <div class="form-group row">
                                 <label for="password"
-                                       class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                                       class="col-md-4 col-form-label text-md-right">{{ __('密码') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password"
@@ -52,7 +52,7 @@
                                                id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                         <label class="form-check-label" for="remember">
-                                            {{ __('Remember Me') }}
+                                            {{ __('记住我') }}
                                         </label>
                                     </div>
                                 </div>
@@ -65,7 +65,7 @@
                                     </button>
 
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
+                                        {{ __('忘记密码?') }}
                                     </a>
                                 </div>
                             </div>
