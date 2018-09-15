@@ -185,7 +185,6 @@
         this.container = utils.isString(target) ? document.getElementById(target) : target;
         this.init();
     }
-
     OnlineImage.prototype = {
         init: function () {
             this.reset();

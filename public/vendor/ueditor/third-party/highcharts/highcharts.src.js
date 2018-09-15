@@ -1808,6 +1808,8 @@
     };
 
 
+
+
 // Series defaults
     var defaultPlotOptions = defaultOptions.plotOptions,
         defaultSeriesOptions = defaultPlotOptions.line;

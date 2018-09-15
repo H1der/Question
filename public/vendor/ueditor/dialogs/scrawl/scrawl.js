@@ -614,7 +614,6 @@ function ue_callback(url, state) {
         alert(state);
     }
 }
-
 //去掉遮罩层
 function removeMaskLayer() {
     var maskLayer = $G("J_maskLayer");
@@ -622,7 +621,6 @@ function removeMaskLayer() {
     maskLayer.innerHTML = "";
     dialog.buttons[0].setDisabled(false);
 }
-
 //添加遮罩层
 function addMaskLayer(html) {
     var maskLayer = $G("J_maskLayer");
@@ -630,7 +628,6 @@ function addMaskLayer(html) {
     maskLayer.className = "maskLayer";
     maskLayer.innerHTML = html;
 }
-
 //执行确认按钮方法
 function exec(scrawlObj) {
     if (scrawlObj.isScrawl) {

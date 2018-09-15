@@ -270,10 +270,10 @@
                 firefox && (ret.firefox = parseFloat(firefox[1]));
                 safari && (ret.safari = parseFloat(safari[1]));
                 opera && (ret.opera = parseFloat(opera[1]));
-
+    
                 return ret;
             })(navigator.userAgent),
-
+    
             /**
              * @description  操作系统检查结果。
              *
@@ -287,14 +287,14 @@
                     // osx = !!ua.match( /\(Macintosh\; Intel / ),
                     android = ua.match(/(?:Android);?[\s\/]+([\d.]+)?/),
                     ios = ua.match(/(?:iPad|iPod|iPhone).*OS\s([\d_]+)/);
-
+    
                 // osx && (ret.osx = true);
                 android && (ret.android = parseFloat(android[1]));
                 ios && (ret.ios = parseFloat(ios[1].replace(/_/g, '.')));
-
+    
                 return ret;
             })(navigator.userAgent),
-
+    
             /**
              * 实现类与类之间的继承。
              * @method inherits
@@ -346,7 +346,7 @@
 
                 // 复制静态方法
                 $.extend(true, child, Super, staticProtos || {});
-
+    
                 /* jshint camelcase: false */
 
                 // 让子类的__super__属性指向父类。
@@ -356,7 +356,7 @@
                 // 暂时用Object.create实现。
                 child.prototype = createObject(Super.prototype);
                 protos && $.extend(true, child.prototype, protos);
-
+    
                 return child;
             },
 
@@ -428,7 +428,7 @@
              * doSomthing( 'ignored', 'arg2', 'arg3' );    // => Array ["arg2", "arg3"]
              */
             slice: uncurryThis([].slice),
-
+    
             /**
              * 生成唯一的ID
              * @method guid
@@ -580,7 +580,7 @@
 
                 eachEvent(name, callback, function (name, callback) {
                     var handler = {e: name};
-
+    
                     handler.cb = callback;
                     handler.ctx = context;
                     handler.ctx2 = context || me;
@@ -614,7 +614,7 @@
                         me.off(name, once);
                         return callback.apply(context || me, arguments);
                     };
-
+    
                     once._cb = callback;
                     me.on(name, once, context);
                 });
@@ -704,7 +704,7 @@
         'base',
         'mediator'
     ], function (Base, Mediator) {
-
+    
         var $ = Base.$;
 
         /**
@@ -729,7 +729,7 @@
         // widgets中有相应扩展
         Uploader.options = {};
         Mediator.installTo(Uploader.prototype);
-
+    
         // 批量添加纯命令式方法。
         $.each({
             upload: 'start-upload',
@@ -837,7 +837,7 @@
                     opts = this.options,
                     name = 'on' + type.substring(0, 1).toUpperCase() +
                         type.substring(1);
-
+    
                 if (
                     // 调用通过on方法注册的handler.
                     Mediator.trigger.apply(this, arguments) === false ||
@@ -853,7 +853,7 @@
                     // 广播所有uploader的事件。
                     Mediator.trigger.apply(Mediator,
                         [this, type].concat(args)) === false) {
-
+    
                     return false;
                 }
 
@@ -887,7 +887,7 @@
         'base',
         'mediator'
     ], function (Base, Mediator) {
-
+    
         var $ = Base.$,
             factories = {},
 
@@ -999,7 +999,7 @@
         'mediator',
         'runtime/runtime'
     ], function (Base, Mediator, Runtime) {
-
+    
         var cache;
 
         cache = (function () {
@@ -1047,7 +1047,7 @@
             };
 
             this.connectRuntime = function (opts, cb) {
-
+    
                 // already connected.
                 if (runtime) {
                     throw new Error('already connected!');
@@ -1061,7 +1061,7 @@
 
                 // 像filePicker只能独立存在，不能公用。
                 runtime = runtime || cache.get(null, standalone);
-
+    
                 // 需要创建
                 if (!runtime) {
                     runtime = Runtime.create(opts, opts.runtimeOrder);
@@ -1145,7 +1145,7 @@
             me.ruid = ruid;
 
             RuntimeClient.call(me, 'Blob');
-
+    
             this.uid = source.uid || this.uid;
             this.type = source.type || '';
             this.size = source.size || 0;
@@ -1178,7 +1178,7 @@
         'base',
         'lib/blob'
     ], function (Base, Blob) {
-
+    
         var uid = 1,
             rExt = /\.([^.]+)$/;
 
@@ -1188,7 +1188,7 @@
             Blob.apply(this, arguments);
             this.name = file.name || ('untitled' + uid++);
             ext = rExt.exec(file.name) ? RegExp.$1.toLowerCase() : '';
-
+    
             // todo 支持其他类型文件的转换。
 
             // 如果有mimetype, 但是文件名里面没有找出后缀规律
@@ -1219,7 +1219,7 @@
         'runtime/client',
         'lib/file'
     ], function (Base, RuntimeClent, File) {
-
+    
         var $ = Base.$;
 
         function FilePicker(opts) {
@@ -1277,7 +1277,7 @@
                             files = me.exec('getFiles');
                             me.trigger('select', $.map(files, function (file) {
                                 file = new File(me.getRuid(), file);
-
+    
                                 // 记录来源。
                                 file._refer = opts.container;
                                 return file;
@@ -1302,10 +1302,10 @@
                     button = this.options.button,
                     width = button.outerWidth ?
                         button.outerWidth() : button.width(),
-
+    
                     height = button.outerHeight ?
                         button.outerHeight() : button.height(),
-
+    
                     pos = button.offset();
 
                 width && height && shimContainer.css({
@@ -1351,7 +1351,7 @@
         'base',
         'uploader'
     ], function (Base, Uploader) {
-
+    
         var $ = Base.$,
             _init = Uploader.prototype._init,
             IGNORE = {},
@@ -1380,13 +1380,13 @@
         }
 
         $.extend(Widget.prototype, {
-
+    
             init: Base.noop,
 
             // 类Backbone的事件监听声明，监听uploader实例上的事件
             // widget直接无法监听事件，事件只能通过uploader来传递
             invoke: function (apiName, args) {
-
+    
                 /*
                     {
                         'make-thumb': 'makeThumb'
@@ -1397,12 +1397,12 @@
                 // 如果无API响应声明则忽略
                 if (!map || !(apiName in map) || !(map[apiName] in this) ||
                     !$.isFunction(this[map[apiName]])) {
-
+    
                     return IGNORE;
                 }
 
                 return this[map[apiName]].apply(this, args);
-
+    
             },
 
             /**
@@ -1419,7 +1419,7 @@
 
         // 扩展Uploader.
         $.extend(Uploader.prototype, {
-
+    
             // 覆写_init用来初始化widgets
             _init: function () {
                 var me = this,
@@ -1447,7 +1447,7 @@
                     rlt = widget.invoke(apiName, args);
 
                     if (rlt !== IGNORE) {
-
+    
                         // Deferred对象
                         if (Base.isPromise(rlt)) {
                             dfds.push(rlt);
@@ -1505,7 +1505,7 @@
 
             klass = Base.inherits(Widget, widgetProto);
             widgetClass.push(klass);
-
+    
             return klass;
         };
 
@@ -1523,7 +1523,7 @@
         var $ = Base.$;
 
         $.extend(Uploader.options, {
-
+    
             /**
              * @property {Selector | Object} [pick=undefined]
              * @namespace options
@@ -1624,7 +1624,7 @@
                 picker.init();
 
                 this.pickers.push(picker);
-
+    
                 return deferred.promise();
             },
 
@@ -1683,7 +1683,7 @@
             constructor: Image,
 
             info: function (val) {
-
+    
                 // setter
                 if (val) {
                     this._info = val;
@@ -1695,7 +1695,7 @@
             },
 
             meta: function (val) {
-
+    
                 // setter
                 if (val) {
                     this._meta = val;
@@ -1743,7 +1743,7 @@
         'lib/image',
         'widgets/widget'
     ], function (Base, Uploader, Image) {
-
+    
         var $ = Base.$,
             throttle;
 
@@ -1772,7 +1772,7 @@
         })(5 * 1024 * 1024);
 
         $.extend(Uploader.options, {
-
+    
             /**
              * @property {Object} [thumb]
              * @namespace options
@@ -1897,7 +1897,7 @@
                 var opts, image;
 
                 file = this.request('get-file', file);
-
+    
                 // 只预览图片格式。
                 if (!file.type.match(/^image/)) {
                     cb(true);
@@ -1905,7 +1905,7 @@
                 }
 
                 opts = $.extend({}, this.options.thumb);
-
+    
                 // 如果传入的是object.
                 if ($.isPlainObject(width)) {
                     opts = $.extend(opts, width);
@@ -1946,7 +1946,7 @@
                     image, deferred;
 
                 file = this.request('get-file', file);
-
+    
                 // 只预览图片格式。
                 if (!opts || !~'image/jpeg,image/jpg'.indexOf(file.type) ||
                     file.size < compressSize ||
@@ -1978,7 +1978,7 @@
                     // INDEX_SIZE_ERR: DOM Exception 1
                     try {
                         blob = image.getAsBlob(opts.type);
-
+    
                         size = file.size;
 
                         // 如果压缩后，比原来还大则不用压缩后的。
@@ -2014,7 +2014,7 @@
         'base',
         'mediator'
     ], function (Base, Mediator) {
-
+    
         var $ = Base.$,
             idPrefix = 'WU_FILE_',
             idSuffix = 0,
@@ -2033,7 +2033,7 @@
          * @param {Lib.File} source [lib.File](#Lib.File)实例, 此source对象是带有Runtime信息的。
          */
         function WUFile(source) {
-
+    
             /**
              * 文件名，包括扩展名（后缀）
              * @property name
@@ -2078,8 +2078,8 @@
              * @type {string}
              */
             this.ext = rExt.exec(this.name) ? RegExp.$1 : '';
-
-
+    
+    
             /**
              * 状态文字说明。在不同的status语境下有不同的用途。
              * @property statusText
@@ -2089,7 +2089,7 @@
 
             // 存储文件状态，防止通过属性直接修改
             statusMap[this.id] = WUFile.Status.INITED;
-
+    
             this.source = source;
             this.loaded = 0;
 
@@ -2099,7 +2099,7 @@
         }
 
         $.extend(WUFile.prototype, {
-
+    
             /**
              * 设置状态，状态变化时会触发`change`事件。
              * @method setStatus
@@ -2110,7 +2110,7 @@
             setStatus: function (status, text) {
 
                 var prevStatus = statusMap[this.id];
-
+    
                 typeof text !== 'undefined' && (this.statusText = text);
 
                 if (status !== prevStatus) {
@@ -2162,7 +2162,7 @@
         });
 
         Mediator.installTo(WUFile.prototype);
-
+    
         /**
          * 文件状态值，具体包括以下几种类型：
          * * `inited` 初始状态
@@ -2200,7 +2200,7 @@
         'mediator',
         'file'
     ], function (Base, Mediator, WUFile) {
-
+    
         var $ = Base.$,
             STATUS = WUFile.Status;
 
@@ -2238,7 +2238,7 @@
         }
 
         $.extend(Queue.prototype, {
-
+    
             /**
              * 将新文件加入对队列尾部
              *
@@ -2405,7 +2405,7 @@
         });
 
         Mediator.installTo(Queue.prototype);
-
+    
         return Queue;
     });
     /**
@@ -2420,7 +2420,7 @@
         'runtime/client',
         'widgets/widget'
     ], function (Base, Uploader, Queue, WUFile, File, RuntimeClient) {
-
+    
         var $ = Base.$,
             rExt = /\.\w+$/,
             Status = WUFile.Status;
@@ -2510,7 +2510,7 @@
 
                     // 如果名字中有后缀，才做后缀白名单处理。
                     rExt.exec(file.name) && !this.accept.test(file.name);
-
+    
                 return !invalid;
             },
 
@@ -2533,7 +2533,7 @@
                 var me = this;
 
                 file = me._wrapFile(file);
-
+    
                 // 不过类型判断允许不允许，先派送 `beforeFileQueued`
                 if (!me.owner.trigger('beforeFileQueued', file)) {
                     return;
@@ -2754,7 +2754,7 @@
         'runtime/client',
         'mediator'
     ], function (Base, RuntimeClient, Mediator) {
-
+    
         var $ = Base.$;
 
         function Transport(opts) {
@@ -2762,7 +2762,7 @@
 
             opts = me.options = $.extend(true, {}, Transport.options, opts || {});
             RuntimeClient.call(this, 'Transport');
-
+    
             this._blob = null;
             this._formData = opts.formData || {};
             this._headers = opts.headers || {};
@@ -2788,7 +2788,7 @@
         };
 
         $.extend(Transport.prototype, {
-
+    
             // 添加Blob, 只能添加一次，最后一次有效。
             appendBlob: function (key, blob, filename) {
                 var me = this,
@@ -2873,7 +2873,7 @@
 
         // 让Transport具备事件功能。
         Mediator.installTo(Transport.prototype);
-
+    
         return Transport;
     });
     /**
@@ -2886,15 +2886,15 @@
         'lib/transport',
         'widgets/widget'
     ], function (Base, Uploader, WUFile, Transport) {
-
+    
         var $ = Base.$,
             isPromise = Base.isPromise,
             Status = WUFile.Status;
 
         // 添加默认配置项
         $.extend(Uploader.options, {
-
-
+    
+    
             /**
              * @property {Boolean} [prepareNextFile=false]
              * @namespace options
@@ -2981,7 +2981,7 @@
 
             while (index < chunks) {
                 len = Math.min(chunkSize, total - start);
-
+    
                 pending.push({
                     file: file,
                     start: start,
@@ -3204,7 +3204,7 @@
                 // 如果当前文件还有没有需要传输的，则直接返回剩下的。
                 if (act && act.has() &&
                     act.file.getStatus() === Status.PROGRESS) {
-
+    
                     // 是否提前准备下一个文件
                     if (opts.prepareNextFile && !me.pending.length) {
                         me._prepareNextFile();
@@ -3214,7 +3214,7 @@
 
                     // 否则，如果正在运行，则准备下一个文件，并等待完成后返回下个分片。
                 } else if (me.runing) {
-
+    
                     // 如果缓存中有，则直接在缓存中取，没有则去queue中取。
                     if (!me.pending.length && me.getStats().numOfQueue) {
                         me._prepareNextFile();
@@ -3253,7 +3253,7 @@
 
                 if (file) {
                     promise = me.request('before-send-file', file, function () {
-
+    
                         // 有可能文件被skip掉了。文件被skip掉后，状态坑定不是Queued.
                         if (file.getStatus() === Status.QUEUED) {
                             me.owner.trigger('uploadStart', file);
@@ -3304,10 +3304,10 @@
                 // 不会丢失content-type信息。
                 block.blob = block.chunks === 1 ? file.source :
                     file.source.slice(block.start, block.end);
-
+    
                 // hook, 每个分片发送之前可能要做些异步的事情。
                 promise = me.request('before-send', block, function () {
-
+    
                     // 有可能文件已经上传出错了，所以不需要再传输了。
                     if (file.getStatus() === Status.PROGRESS) {
                         me._doSend(block);
@@ -3450,7 +3450,7 @@
                     // 自动重试
                     if (block.chunks > 1 && ~'http,abort'.indexOf(type) &&
                         block.retried < opts.chunkRetry) {
-
+    
                         block.retried++;
                         tr.send();
 
@@ -3502,7 +3502,7 @@
                 // 在发送之间可以添加字段什么的。。。
                 // 如果默认的字段不够使用，可以通过监听此事件来扩展
                 owner.trigger('uploadBeforeSend', block, data, headers);
-
+    
                 // 开始发送。
                 tr.appendBlob(opts.fileVal, block.blob, file.name);
                 tr.append(data);
@@ -3545,7 +3545,7 @@
         'file',
         'widgets/widget'
     ], function (Base, Uploader, WUFile) {
-
+    
         var $ = Base.$,
             validators = {},
             api;
@@ -3731,7 +3731,7 @@
             uploader.on('beforeFileQueued', function (file) {
                 var hash = file.__hash || (file.__hash = hashString(file.name +
                     file.size + file.lastModifiedDate));
-
+    
                 // 已经重复了
                 if (mapping[hash]) {
                     this.trigger('error', 'F_DUPLICATE', file);
@@ -3761,7 +3761,7 @@
     define('runtime/compbase', [], function () {
 
         function CompBase(owner, runtime) {
-
+    
             this.owner = owner;
             this.options = owner.options;
 
@@ -3788,7 +3788,7 @@
         'runtime/runtime',
         'runtime/compbase'
     ], function (Base, Runtime, CompBase) {
-
+    
         var $ = Base.$,
             type = 'flash',
             components = {};
@@ -3854,7 +3854,7 @@
                 parts = type.split('::');
                 uid = parts[0];
                 type = parts[1];
-
+    
                 // console.log.apply( console, arguments );
 
                 if (type === 'Ready' && uid === me.uid) {
@@ -3944,7 +3944,7 @@
 
         FlashRuntime.register = function (name, component) {
             component = components[name] = Base.inherits(CompBase, $.extend({
-
+    
                 // @todo fix this later
                 flashExec: function () {
                     var owner = this.owner,
@@ -3953,7 +3953,7 @@
                     return runtime.flashExec.apply(owner, arguments);
                 }
             }, component));
-
+    
             return component;
         };
 
@@ -4053,7 +4053,7 @@
                 if (opts.sendAsBinary) {
                     server += (/\?/.test(server) ? '&' : '?') +
                         $.param(owner._formData);
-
+    
                     binary = blob.uid;
                 } else {
                     $.each(owner._formData, function (k, v) {

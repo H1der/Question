@@ -25,7 +25,6 @@ function hideFlash() {
     flashObj = null;
     flashContainer.innerHTML = "";
 }
-
 function addOkListener() {
     dialog.onok = function () {
         if (!imageUrls.length) return;
@@ -155,5 +154,4 @@ function createCopyButton(id, dataFrom) {
         }
     }, 500);
 }
-
 createCopyButton("clipboard", "localPath");

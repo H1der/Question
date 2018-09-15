@@ -34,7 +34,7 @@ baidu.flash = baidu.flash || {};
 
 /**
  * 操作dom的方法
- * @namespace baidu.dom
+ * @namespace baidu.dom 
  */
 baidu.dom = baidu.dom || {};
 
@@ -83,7 +83,7 @@ baidu.array = baidu.array || {};
  * each方法不支持对Object的遍历,对Object的遍历使用baidu.object.each 。
  * @shortcut each
  * @meta standard
- *
+ *             
  * @returns {Array} 遍历的数组
  */
 
@@ -134,7 +134,7 @@ baidu.lang.isFunction = function (source) {
  * @shortcut isString
  * @meta standard
  * @see baidu.lang.isObject,baidu.lang.isNumber,baidu.lang.isArray,baidu.lang.isElement,baidu.lang.isBoolean,baidu.lang.isDate
- *
+ *             
  * @returns {boolean} 类型判断结果
  */
 baidu.lang.isString = function (source) {
@@ -176,14 +176,14 @@ baidu.browser.opera = /opera(\/| )(\d+(\.\d+)?)(.+?(version\/(\d+(\.\d+)?)))?/i.
  * @param {string} position 插入html的位置信息，取值为beforeBegin,afterBegin,beforeEnd,afterEnd
  * @param {string} html 要插入的html
  * @remark
- *
+ * 
  * 对于position参数，大小写不敏感<br>
  * 参数的意思：beforeBegin&lt;span&gt;afterBegin   this is span! beforeEnd&lt;/span&gt; afterEnd <br />
  * 此外，如果使用本函数插入带有script标签的HTML字符串，script标签对应的脚本将不会被执行。
- *
+ * 
  * @shortcut insertHTML
  * @meta standard
- *
+ *             
  * @returns {HTMLElement} 目标元素
  */
 baidu.dom.insertHTML = function (element, position, html) {
@@ -264,7 +264,7 @@ baidu.string = baidu.string || {};
  * @shortcut encodeHTML
  * @meta standard
  * @see baidu.string.decodeHTML
- *
+ *             
  * @returns {string} html编码后的字符串
  */
 baidu.string.encodeHTML = function (source) {
@@ -308,7 +308,7 @@ baidu.encodeHTML = baidu.string.encodeHTML;
  * @param {boolean} options.devicefont            设置静态文本对象是否以设备字体呈现。允许值：true/false
  * @param {boolean} options.swliveconnect        第一次加载flash时浏览器是否应启动Java。允许值：true/false
  * @param {Object}    options.vars                要传递给flash的参数，支持JSON或string类型。
- *
+ * 
  * @see baidu.swf.create
  * @meta standard
  * @returns {string} flash对象的html字符串
@@ -316,7 +316,7 @@ baidu.encodeHTML = baidu.string.encodeHTML;
 baidu.swf.createHTML = function (options) {
     options = options || {};
     var version = baidu.swf.version,
-        needVersion = options['ver'] || '6.0.0',
+        needVersion = options['ver'] || '6.0.0', 
         vUnit1, vUnit2, i, k, len, item, tmpOpt = {},
         encodeHTML = baidu.string.encodeHTML;
     for (k in options) {
@@ -461,7 +461,7 @@ baidu.swf.create = function (options, target) {
     var html = baidu.swf.createHTML(options)
         || options['errorMessage']
         || '';
-
+                
     if (target && 'string' == typeof target) {
         target = document.getElementById(target);
     }
@@ -485,7 +485,7 @@ baidu.browser.ie = baidu.ie = /msie (\d+\.\d+)/i.test(navigator.userAgent) ? (do
  * @param {Any} match 要移除的项
  * @meta standard
  * @see baidu.array.removeAt
- *
+ *             
  * @returns {Array} 移除后的数组
  */
 baidu.array.remove = function (source, match) {
@@ -507,12 +507,13 @@ baidu.array.remove = function (source, match) {
  * @param {Any} source 目标参数
  * @meta standard
  * @see baidu.lang.isString,baidu.lang.isObject,baidu.lang.isNumber,baidu.lang.isElement,baidu.lang.isBoolean,baidu.lang.isDate
- *
+ *             
  * @returns {boolean} 类型判断结果
  */
 baidu.lang.isArray = function (source) {
     return '[object Array]' == Object.prototype.toString.call(source);
 };
+
 
 
 /**
@@ -566,7 +567,7 @@ baidu.swf.getMovie = function (name) {
 
 
 baidu.flash._Base = (function () {
-
+   
     var prefix = 'bd__flash__';
 
     /**
@@ -634,7 +635,7 @@ baidu.flash._Base = (function () {
      * 绘制flash
      * @private
      * @param {Object} options 创建参数
-     * @return {Object}
+     * @return {Object} 
      */
     function _render(options) {
         if (!options.id) {
@@ -670,7 +671,7 @@ baidu.flash._Base = (function () {
             if (callBack.length > 0) {
                 baidu.each(callBack, function (funName, index) {
                     callBack[index] = _createFunName(options[funName] || new Function());
-                });
+                });    
             }
             me.call('setJSFuncName', [callBack]);
         };
@@ -717,7 +718,7 @@ baidu.flash._Base = (function () {
          * @return {String}
          */
         me.createFunName = function (fun) {
-            return _createFunName(fun);
+            return _createFunName(fun);    
         };
 
         /**
@@ -732,7 +733,7 @@ baidu.flash._Base = (function () {
                 _call();
 
                 isReady = true;
-            }
+            }               
         };
 
         /**
@@ -745,9 +746,10 @@ baidu.flash._Base = (function () {
             callQueue = [];
         }
 
-        autoRender && me.render();
+        autoRender && me.render(); 
     };
 })();
+
 
 
 /**
@@ -782,13 +784,13 @@ baidu.flash._Base = (function () {
  * @param {String|Function} changeFlashHeight 改变Flash的高度，mode==1的时候才有用
  */
 baidu.flash.imageUploader = baidu.flash.imageUploader || function (options) {
-
+   
     var me = this,
         options = options || {},
         _flash = new baidu.flash._Base(options, [
             'selectFileCallback',
             'exceedFileCallback',
-            'deleteFileCallback',
+            'deleteFileCallback', 
             'startUploadCallback',
             'uploadCompleteCallback',
             'uploadErrorCallback',
@@ -837,10 +839,10 @@ baidu.object = baidu.object || {};
  *
  1.目标对象中，与源对象key相同的成员将会被覆盖。<br>
  2.源对象的prototype成员不会拷贝。
-
+		
  * @shortcut extend
  * @meta standard
- *
+ *             
  * @returns {Object} 目标对象
  */
 baidu.extend =
@@ -853,6 +855,9 @@ baidu.extend =
 
         return target;
     };
+
+
+
 
 
 /**
@@ -879,14 +884,14 @@ baidu.flash.fileUploader = baidu.flash.fileUploader || function (options) {
     options.createOptions = baidu.extend({
         wmod: 'transparent'
     }, options.createOptions || {});
-
+    
     var _flash = new baidu.flash._Base(options, [
         'selectFile',
         'exceedMaxSize',
         'deleteFile',
         'uploadStart',
         'uploadComplete',
-        'uploadError',
+        'uploadError', 
         'uploadProgress'
     ]);
 
@@ -908,7 +913,7 @@ baidu.flash.fileUploader = baidu.flash.fileUploader || function (options) {
      */
     me.setMSFunName = function (fun) {
         _flash.call('setMSFunName', [_flash.createFunName(fun)]);
-    };
+    }; 
 
     /**
      * 执行上传操作
@@ -1047,7 +1052,7 @@ baidu.flash.fileUploader = baidu.flash.fileUploader || function (options) {
 baidu.sio = baidu.sio || {};
 
 /**
- *
+ * 
  * @param {HTMLElement} src script节点
  * @param {String} url script节点的地址
  * @param {String} [charset] 编码
@@ -1061,7 +1066,7 @@ baidu.sio._createScriptTag = function (scr, url, charset) {
 
 /**
  * 删除script的属性，再删除script标签，以解决修复内存泄漏的问题
- *
+ * 
  * @param {HTMLElement} src script节点
  */
 baidu.sio._removeScriptTag = function (scr) {
@@ -1235,6 +1240,7 @@ baidu.sio.log = function (url) {
 };
 
 
+
 /*
  * Tangram
  * Copyright 2009 Baidu Inc. All rights reserved.
@@ -1262,6 +1268,7 @@ baidu.json = baidu.json || {};
  */
 
 
+
 /**
  * 将字符串解析成json对象。注：不会自动祛除空格
  * @name baidu.json.parse
@@ -1272,7 +1279,7 @@ baidu.json = baidu.json || {};
  * 该方法的实现与ecma-262第五版中规定的JSON.parse不同，暂时只支持传入一个参数。后续会进行功能丰富。
  * @meta standard
  * @see baidu.json.stringify,baidu.json.decode
- *
+ *             
  * @returns {JSON} 解析结果json对象
  */
 baidu.json.parse = function (data) {
@@ -1290,6 +1297,7 @@ baidu.json.parse = function (data) {
  */
 
 
+
 /**
  * 将字符串解析成json对象，为过时接口，今后会被baidu.json.parse代替
  * @name baidu.json.decode
@@ -1298,7 +1306,7 @@ baidu.json.parse = function (data) {
  * @param {string} source 需要解析的字符串
  * @meta out
  * @see baidu.json.encode,baidu.json.parse
- *
+ *             
  * @returns {JSON} 解析结果json对象
  */
 baidu.json.decode = baidu.json.parse;
@@ -1313,6 +1321,7 @@ baidu.json.decode = baidu.json.parse;
  */
 
 
+
 /**
  * 将json对象序列化
  * @name baidu.json.stringify
@@ -1323,7 +1332,7 @@ baidu.json.decode = baidu.json.parse;
  * 该方法的实现与ecma-262第五版中规定的JSON.stringify不同，暂时只支持传入一个参数。后续会进行功能丰富。
  * @meta standard
  * @see baidu.json.parse,baidu.json.encode
- *
+ *             
  * @returns {string} 序列化后的字符串
  */
 baidu.json.stringify = (function () {
@@ -1348,7 +1357,7 @@ baidu.json.stringify = (function () {
     function encodeString(source) {
         if (/["\\\x00-\x1f]/.test(source)) {
             source = source.replace(
-                /["\\\x00-\x1f]/g,
+                /["\\\x00-\x1f]/g, 
                 function (match) {
                     var c = escapeMap[match];
                     if (c) {
@@ -1368,7 +1377,7 @@ baidu.json.stringify = (function () {
      * @private
      */
     function encodeArray(source) {
-        var result = ["["],
+        var result = ["["], 
             l = source.length,
             preComma, i, item;
 
@@ -1482,7 +1491,7 @@ baidu.json.stringify = (function () {
  * @param {JSON} value 需要序列化的json对象
  * @meta out
  * @see baidu.json.decode,baidu.json.stringify
- *
+ *             
  * @returns {string} 序列化后的字符串
  */
 baidu.json.encode = baidu.json.stringify;

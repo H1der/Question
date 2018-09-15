@@ -9,7 +9,6 @@
 //清空上次查选的痕迹
 editor.firstForSR = 0;
 editor.currentRangeForSR = null;
-
 //给tab注册切换事件
 /**
  * tab点击处理事件
@@ -59,12 +58,10 @@ $G('searchtab').onmousedown = function () {
     $G('search-msg').innerHTML = '';
     $G('replace-msg').innerHTML = ''
 }
-
 //是否区分大小写
 function getMatchCase(id) {
     return $G(id).checked ? true : false;
 }
-
 //查找
 $G("nextFindBtn").onclick = function (txt, dir, mcase) {
     var findtxt = $G("findtxt").value, obj;

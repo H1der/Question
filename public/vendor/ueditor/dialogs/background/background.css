@@ -114,6 +114,7 @@ div.alignment, #custom {
     width: 100px;
 }
 
+
 /* 图片管理样式 */
 #imgManager {
     width: 100%;
@@ -125,14 +126,12 @@ div.alignment, #custom {
     overflow-x: hidden;
     overflow-y: auto;
 }
-
 #imgManager ul {
     display: block;
     list-style: none;
     margin: 0;
     padding: 0;
 }
-
 #imgManager li {
     float: left;
     display: block;
@@ -146,7 +145,6 @@ div.alignment, #custom {
     cursor: pointer;
     position: relative;
 }
-
 #imgManager li.clearFloat {
     float: none;
     clear: both;
@@ -156,11 +154,9 @@ div.alignment, #custom {
     margin: 0;
     padding: 0;
 }
-
 #imgManager li img {
     cursor: pointer;
 }
-
 #imgManager li .icon {
     cursor: pointer;
     width: 113px;
@@ -172,18 +168,15 @@ div.alignment, #custom {
     border: 0;
     background-repeat: no-repeat;
 }
-
 #imgManager li .icon:hover {
     width: 107px;
     height: 107px;
     border: 3px solid #1094fa;
 }
-
 #imgManager li.selected .icon {
     background-image: url(images/success.png);
     background-position: 75px 75px;
 }
-
 #imgManager li.selected .icon:hover {
     width: 107px;
     height: 107px;

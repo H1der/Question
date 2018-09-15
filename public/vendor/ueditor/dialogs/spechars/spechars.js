@@ -80,7 +80,6 @@ var charsContent = [
         $G("tabBodys").appendChild(div);
     }
 })(charsContent);
-
 function toArray(str) {
     return str.split(",");
 }

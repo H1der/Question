@@ -1,7 +1,7 @@
 /*!
  * UEditor
  * version: ueditor
- * build: Tue Aug 25 2015 15:23:01 GMT+0800 (CST)
+ * build: Thu May 29 2014 16:47:49 GMT+0800 (中国标准时间)
  */
 
 (function () {
@@ -1653,6 +1653,7 @@
         return ((allListeners = (obj.__allListeners || force && (obj.__allListeners = {})))
             && (allListeners[type] || force && (allListeners[type] = [])));
     }
+
 
 
 // core/dtd.js
@@ -9799,7 +9800,6 @@
         return root;
     };
 
-
 // core/filternode.js
     /**
      * UE过滤节点的静态方法
@@ -11033,6 +11033,7 @@
         };
 
     };
+
 
 
 // plugins/autosubmit.js
@@ -12282,6 +12283,7 @@
     };
 
 
+
 // plugins/scrawl.js
 ///import core
 ///commands 涂鸦
@@ -12658,6 +12660,7 @@
     };
 
 
+
 // plugins/convertcase.js
     /**
      * 大小写转换
@@ -12716,6 +12719,7 @@
         };
 
 
+
 // plugins/indent.js
     /**
      * 首行缩进
@@ -12769,6 +12773,7 @@
         },
         notNeedUndo: 1
     };
+
 
 
 // plugins/preview.js
@@ -13145,6 +13150,7 @@
     })();
 
 
+
 // plugins/horizontal.js
     /**
      * 插入分割线插件
@@ -13251,6 +13257,7 @@
     };
 
 
+
 // plugins/time.js
     /**
      * 插入时间和日期
@@ -13354,6 +13361,8 @@
     };
 
 
+
+
 // plugins/lineheight.js
     /**
      * 设置行内间距
@@ -13403,6 +13412,8 @@
             }
         };
     };
+
+
 
 
 // plugins/insertcode.js
@@ -13984,6 +13995,7 @@
 
         }
     };
+
 
 
 // plugins/anchor.js
@@ -15073,6 +15085,7 @@
             }
         }
     };
+
 
 
 // plugins/puretxtpaste.js
@@ -16445,6 +16458,7 @@
     };
 
 
+
 // plugins/source.js
     /**
      * 源码编辑插件
@@ -17768,6 +17782,7 @@
 
 
     };
+
 
 
 // plugins/autofloat.js
@@ -20148,7 +20163,6 @@
             }
         }
     })();
-
 
 // plugins/table.action.js
     /**
@@ -22785,6 +22799,8 @@
     };
 
 
+
+
 // plugins/basestyle.js
     /**
      * B、I、sub、super命令支持
@@ -22935,6 +22951,7 @@
     };
 
 
+
 // plugins/elementpath.js
     /**
      * 选取路径命令
@@ -22978,6 +22995,7 @@
             }
         };
     };
+
 
 
 // plugins/formatmatch.js
@@ -23114,6 +23132,7 @@
             notNeedUndo: 1
         };
     };
+
 
 
 // plugins/searchreplace.js
@@ -23738,6 +23757,7 @@
             }
         }
     };
+
 
 
 // plugins/webapp.js
@@ -25120,6 +25140,8 @@
             }
         }
     });
+
+
 
 
 // ui/ui.js
@@ -26667,6 +26689,9 @@
     })();
 
 
+
+
+
 // ui/pastepicker.js
 ///import core
 ///import uicore
@@ -26730,6 +26755,10 @@
         utils.inherits(PastePicker, UIBase);
         utils.extend(PastePicker.prototype, Stateful, true);
     })();
+
+
+
+
 
 
 // ui/toolbar.js
@@ -29806,6 +29835,7 @@
         })
 
     });
+
 
 
 })();

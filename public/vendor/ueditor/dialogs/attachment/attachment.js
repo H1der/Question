@@ -88,7 +88,6 @@
         this.$wrap = target.constructor == String ? $('#' + target) : $(target);
         this.init();
     }
-
     UploadFile.prototype = {
         init: function () {
             this.fileList = [];
@@ -575,7 +574,6 @@
         this.container = utils.isString(target) ? document.getElementById(target) : target;
         this.init();
     }
-
     OnlineFile.prototype = {
         init: function () {
             this.initContainer();

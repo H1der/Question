@@ -25,7 +25,6 @@
     function getParam(name) {
         return location.href.match(new RegExp('[?#&]' + name + '=([^?#&]+)', 'i')) ? RegExp.$1 : '';
     }
-
     var map, marker;
     var centerParam = getParam('center');
     var zoomParam = getParam('zoom');

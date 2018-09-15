@@ -1,6 +1,6 @@
 /**
  * Highcharts Drilldown plugin
- *
+ * 
  * Author: Torstein Honsi
  * Last revision: 2013-02-18
  * License: MIT License
@@ -444,5 +444,5 @@
             wrap(seriesTypes[type].prototype, 'drawTracker', drawTrackerWrapper);
         }
     }
-
+		
 }(Highcharts));

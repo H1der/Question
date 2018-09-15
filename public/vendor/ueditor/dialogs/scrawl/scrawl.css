@@ -26,7 +26,6 @@ em {
     border-radius: 5px;
     box-shadow: 2px 2px 5px #d3d6da;
 }
-
 /*module
 */
 .main {
@@ -139,7 +138,6 @@ em {
 .addImgH_form input {
     width: 100%;
 }
-
 /*scrawl遮罩层
 */
 .maskLayerNull {
@@ -159,7 +157,6 @@ em {
     line-height: 300px;
     z-index: 1000;
 }
-
 /*btn state
 */
 .previousStepH .icon {
@@ -304,7 +301,6 @@ em {
     color: #888;
     cursor: pointer;
 }
-
 /*icon
 */
 .brushIcon {

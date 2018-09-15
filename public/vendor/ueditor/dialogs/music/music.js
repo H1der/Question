@@ -1,7 +1,6 @@
 function Music() {
     this.init();
 }
-
 (function () {
     var pages = [],
         panels = [],

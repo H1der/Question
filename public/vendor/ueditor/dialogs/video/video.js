@@ -323,7 +323,6 @@
         this.$wrap = target.constructor == String ? $('#' + target) : $(target);
         this.init();
     }
-
     UploadFile.prototype = {
         init: function () {
             this.fileList = [];
