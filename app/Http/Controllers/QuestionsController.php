@@ -42,12 +42,20 @@ class QuestionsController extends Controller
      */
     public function store(Request $request)
     {
+        $rules = [
+            'title' => 'required|min:6|max:196',
+            'body' => 'required|min:26',
+        ];
+        $this->validate($request, $rules);
+
         $data = [
             'title' => $request->get('title'),
             'body' => $request->get('body'),
             'user_id' => Auth::id(),
         ];
         $question = Question::create($data);
+
+
         return redirect()->route('questions.show', [$question->id]);
     }
 

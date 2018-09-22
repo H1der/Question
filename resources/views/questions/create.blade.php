@@ -11,10 +11,32 @@
                             {{csrf_field()}}
                             <div class="form-group">
                                 <label for="title">标题</label>
-                                <input type="text" name="title" class="form-control" placeholder="标题" id="title">
+                                <input type="text" value="{{ old('title') }}" name="title"
+                                       class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}"
+                                       placeholder="标题" id="title">
+                                @if ($errors->has('title'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('title') }}</strong>
+                                    </span>
+                                @endif
                             </div>
-                            <!-- 编辑器容器 -->
-                            <script id="container" name="body" style="height: 200px;" type="text/plain"></script>
+
+                            <div class="form-group{{ $errors->has('body') ? ' is-invalid' : '' }}">
+                                <!-- 编辑器容器 -->
+                                <script id="container" name="body" style="height: 200px;" type="text/plain">
+                                    {!! old('body') !!}
+                                </script>
+
+                                <
+                                /div>
+                                @if ($errors->has('body'))
+                                < span
+                                class
+                                = "invalid-feedback"
+                                role = "alert" >
+                                    < strong >{{ $errors->first('body') }}< /strong>
+                                    < /span>
+                                        @endif
                             <button class="btn btn-success" type="submit">发布问题</button>
                         </form>
                     </div>
