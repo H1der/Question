@@ -30,14 +30,13 @@
                                 <!-- 编辑器容器 -->
                                 <script id="container" name="body" style="height: 200px;" type="text/plain">
                                     {!! old('body') !!}
-                                </script>
-                            </div>
-                            @if ($errors->has('body'))
-                                <span class="invalid-feedback" role="alert">
-                                    < strong >{{ $errors->first('body') }}< /strong>
+                                </script></div>
+                                @if ($errors->has('body'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('body') }}</strong>
                                     </span>
-                            @endif
-                            <button class="btn btn-success" type="submit">发布问题</button>
+                                @endif
+                                    <button class="btn btn-success" type="submit">发布问题</button>
                         </form>
                     </div>
                 </div>
