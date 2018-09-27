@@ -71,7 +71,6 @@ class QuestionsController extends Controller
 
         $question->topics()->attach($topics);
 
-
         return redirect()->route('questions.show', [$question->id]);
     }
 
@@ -95,7 +94,12 @@ class QuestionsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $question = $this->questionRepository->byId($id);
+        if (Auth::user()->owns($question)){
+            return view('questions.edit',compact('question'));
+        }
+
+        return back();
     }
 
     /**
@@ -107,7 +111,18 @@ class QuestionsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $question = $this->questionRepository->byId($id);
+        $topics = $this->questionRepository->normalizeTopic($request->get('topics'));
+
+        $question->update([
+            'title' => $request->get('title'),
+            'body' => $request->get('body'),
+        ]);
+
+        $question->topics()->sync($topics);
+
+        return redirect()->route('questions.show', [$question->id]);
+
     }
 
     /**

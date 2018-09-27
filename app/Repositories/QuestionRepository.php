@@ -19,6 +19,11 @@ class QuestionRepository
         return Question::where('id', $id)->with('topics')->first();
     }
 
+    public function byId($id)
+    {
+        return Question::find($id);
+    }
+
     public function create(array $attributes)
     {
         return Question::create($attributes);
