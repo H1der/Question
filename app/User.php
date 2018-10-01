@@ -21,6 +21,11 @@ class User extends Authenticatable
         'name', 'email', 'password', 'avatar', 'confirmation_token'
     ];
 
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -33,6 +38,14 @@ class User extends Authenticatable
     public function owns(Model $model)
     {
         return $this->id == $model->user_id;
+    }
+
+    public function follows($question)
+    {
+        return Follow::create([
+            'question_id' => $question,
+            'user_id' => $this->id,
+        ]);
     }
 
     public function sendPasswordResetNotification($token)
