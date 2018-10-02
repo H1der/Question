@@ -36,8 +36,9 @@
                         <span>关注者</span>
                     </div>
                     <div class="card-body">
-                        <a href="/question/{{$question->id}}/follow" class="btn btn-default">
-                            关注该问题
+                        <a href="/question/{{$question->id}}/follow"
+                           class="btn btn-default {{ \Illuminate\Support\Facades\Auth::user()->followed($question->id) ? 'btn-success' : '' }}">
+                            {{ \Illuminate\Support\Facades\Auth::user()->followed($question->id) ? '已关注' : '关注该问题' }}
                         </a>
                         <a href="#editor" class="btn btn-primary">撰写答案</a>
                     </div>
