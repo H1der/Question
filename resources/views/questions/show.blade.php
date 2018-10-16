@@ -41,7 +41,7 @@
                             {{--{{ \Illuminate\Support\Facades\Auth::user()->followed($question->id) ? '已关注' : '关注该问题' }}--}}
                         {{--</a>--}}
 
-                        <question-follow-button question="{{ $question->id }}" user="{{\Illuminate\Support\Facades\Auth::id()}}"></question-follow-button>
+                        <question-follow-button question="{{ $question->id }}"></question-follow-button>
                         <a href="#editor" class="btn btn-primary">撰写答案</a>
                     </div>
                 </div>
