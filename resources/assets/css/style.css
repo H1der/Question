@@ -3,7 +3,7 @@
 }
 
 a.topic {
-    background: #eff6fa;
+    background: #eff3ff;
     padding: 1px 10px 0;
     border-radius: 30px;
     text-decoration: none;
@@ -11,6 +11,7 @@ a.topic {
     display: inline-block;
     white-space: nowrap;
     cursor: pointer;
+    float: right;
 }
 
 a.topic:hover {
@@ -46,9 +47,10 @@ a.topic:hover {
 }
 .user-statics {
     display: flex;
+    justify-content: space-around;
 }
 .statics-item {
-    padding: 2px 20px;
+    padding: 10px 0px;
 }
 .messages-list {
     margin-top: 80px;

@@ -107,23 +107,22 @@
                             <div class="media-body">
                                 <h4 class="media-heading"><a href="">{{$question->user->name}}</a></h4>
                             </div>
-                            <div class="user-statics" >
-                                <div class="statics-item text-center">
-                                    <div class="statics-text">问题</div>
-                                    <div class="statics-count">{{ $question->user->questions_count }}</div>
-                                </div>
-                                <div class="statics-item text-center">
-                                    <div class="statics-text">回答</div>
-                                    <div class="statics-count">{{ $question->user->answers_count }}</div>
-                                </div>
-                                <div class="statics-item text-center">
-                                    <div class="statics-text">关注者</div>
-                                    <div class="statics-count">{{ $question->user->followers_count }}</div>
-                                </div>
+                        </div>
+                        <div class="user-statics" >
+                            <div class="statics-item text-center">
+                                <div class="statics-text">问题</div>
+                                <div class="statics-count">{{ $question->user->questions_count }}</div>
+                            </div>
+                            <div class="statics-item text-center">
+                                <div class="statics-text">回答</div>
+                                <div class="statics-count">{{ $question->user->answers_count }}</div>
+                            </div>
+                            <div class="statics-item text-center">
+                                <div class="statics-text">关注者</div>
+                                <div class="statics-count">{{ $question->user->followers_count }}</div>
                             </div>
                         </div>
-
-                        <question-follow-button question="{{ $question->id }}"></question-follow-button>
+                        <user-follow-button user="{{ $question->user_id }}"></user-follow-button>
                         <a href="#editor" class="btn btn-primary">发送私信</a>
                     </div>
                 </div>
